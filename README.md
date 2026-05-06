@@ -1,6 +1,29 @@
-# ElevenLabs Growth Prototype: Voice Landing Page Generator
+# Voice Landing Page Generator
 
-A product-led growth prototype for turning a project idea into a polished, voice-enhanced landing page in under a minute.
+A product-led growth prototype that turns a project idea into a polished,
+shareable landing page with generated marketing copy, an ElevenLabs narrated
+voice pitch, a CTA, and lightweight engagement analytics. The goal is to make
+the first-minute ElevenLabs activation loop tangible: input an idea, generate a
+voice-enhanced artifact, share it, and measure views, listens, shares, and CTA
+clicks.
+
+## Demo
+
+### Generator
+
+![Voice landing page generator form](docs/images/home.jpg)
+
+### Generated preview
+
+<video src="docs/media/chipotle-preview.mp4" controls muted playsinline></video>
+
+### Pitch library
+
+![Pitch library with saved generated pages](docs/images/library.jpg)
+
+### Preview detail
+
+![Generated landing page with ElevenLabs audio pitch](docs/images/preview-wide.jpg)
 
 ## Run locally
 
