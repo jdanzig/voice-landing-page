@@ -23,9 +23,9 @@ clicks.
 
 ![Pitch library with saved generated pages](docs/images/library.jpg)
 
-### Preview detail
+### Analytics detail
 
-![Generated landing page with ElevenLabs audio pitch](docs/images/preview-wide.jpg)
+![Analytics dashboard for a generated voice landing page](docs/images/analytics.jpg)
 
 ## Run locally
 
