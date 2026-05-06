@@ -15,7 +15,9 @@ clicks.
 
 ### Generated preview
 
-<video src="docs/media/chipotle-preview.mp4" controls muted playsinline></video>
+![Generated voice landing page preview](docs/images/preview-wide.jpg)
+
+[Download the generated preview screen recording](docs/media/chipotle-preview.mp4)
 
 ### Pitch library
 
