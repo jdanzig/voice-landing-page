@@ -49,6 +49,33 @@ export async function getPage(id: string) {
   return store[id] ?? null;
 }
 
+export async function listPages() {
+  const store = await readStore();
+  return Object.values(store).sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
+
+export async function deletePage(id: string) {
+  const store = await readStore();
+  const page = store[id];
+  if (!page) return false;
+
+  delete store[id];
+  await writeStore(store);
+
+  if (page.audioUrl?.startsWith("/audio/")) {
+    const audioPath = path.join(process.cwd(), "public", page.audioUrl);
+    try {
+      await fs.unlink(audioPath);
+    } catch {
+      // Audio may already be gone; the page record is the source of truth.
+    }
+  }
+
+  return true;
+}
+
 export async function trackEvent(id: string, event: TrackEvent) {
   const store = await readStore();
   const page = store[id];

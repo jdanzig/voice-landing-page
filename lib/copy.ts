@@ -29,6 +29,11 @@ function compactDescription(description: string) {
   return description.trim().replace(/\.$/, "");
 }
 
+function audienceHeadline(audience: string, verb: string) {
+  const normalizedAudience = audience.toLowerCase();
+  return `${verb} the next big step for ${normalizedAudience}.`;
+}
+
 export function generateCopy(input: LandingInput): LandingCopy {
   const verbs = toneVerbs[input.tone] ?? toneVerbs.Professional;
   const description = compactDescription(input.description);
@@ -39,7 +44,7 @@ export function generateCopy(input: LandingInput): LandingCopy {
   const headline =
     input.tone === "Direct"
       ? `${sentenceCase(input.name)} helps ${audience.toLowerCase()} move faster.`
-      : `${primaryVerb} ${audience.toLowerCase()}'s next big step.`;
+      : audienceHeadline(audience, primaryVerb);
 
   const subheadline = `${input.name} is ${description}, built for ${audience.toLowerCase()} who want to move from idea to traction ${outcome}`;
 
