@@ -29,6 +29,11 @@ function compactDescription(description: string) {
   return description.trim().replace(/\.$/, "");
 }
 
+function sentenceFragment(value: string) {
+  const trimmed = value.trim();
+  return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+}
+
 function audienceHeadline(audience: string, verb: string) {
   const normalizedAudience = audience.toLowerCase();
   return `${verb} the next big step for ${normalizedAudience}.`;
@@ -37,6 +42,7 @@ function audienceHeadline(audience: string, verb: string) {
 export function generateCopy(input: LandingInput): LandingCopy {
   const verbs = toneVerbs[input.tone] ?? toneVerbs.Professional;
   const description = compactDescription(input.description);
+  const descriptionFragment = sentenceFragment(description);
   const audience = input.audience.trim();
   const primaryVerb = verbs[0];
   const outcome = outcomeByTone[input.tone] ?? outcomeByTone.Professional;
@@ -46,15 +52,15 @@ export function generateCopy(input: LandingInput): LandingCopy {
       ? `${sentenceCase(input.name)} helps ${audience.toLowerCase()} move faster.`
       : audienceHeadline(audience, primaryVerb);
 
-  const subheadline = `${input.name} is ${description}, built for ${audience.toLowerCase()} who want to move from idea to traction ${outcome}`;
+  const subheadline = `${input.name} is ${descriptionFragment}, built for ${audience.toLowerCase()} who want to move from idea to traction ${outcome}`;
 
   const voiceoverScript = [
     `Meet ${input.name}.`,
-    `It is ${description}.`,
+    `It is ${descriptionFragment}.`,
     `If you are ${audience.toLowerCase()}, you already know how much time gets lost between a good idea and a clear next action.`,
     `${input.name} gives you a sharper way to explain the offer, earn attention, and invite people to take the next step.`,
     `In less than a minute, you can turn the pitch into something polished, memorable, and ready to share.`,
-    `${input.cta.trim()} today, and see how quickly the right message can start working for you.`
+    `Click "${input.cta.trim()}" today, and see how quickly the right message can start working for you.`
   ].join(" ");
 
   return {
@@ -65,7 +71,7 @@ export function generateCopy(input: LandingInput): LandingCopy {
     alternateHooks: [
       `${verbs[1]} ${audience.toLowerCase()} growth.`,
       `${sentenceCase(input.name)} turns your pitch into momentum.`,
-      `${verbs[2]} ${description.toLowerCase()}.`
+      `${verbs[2]} ${descriptionFragment}.`
     ]
   };
 }
