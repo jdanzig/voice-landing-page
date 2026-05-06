@@ -1,0 +1,10 @@
+node_modules
+.next
+.npm-cache
+out
+dist
+.env
+.env*.local
+data/pages.json
+public/audio/*.mp3
+tsconfig.tsbuildinfo
